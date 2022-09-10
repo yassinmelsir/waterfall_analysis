@@ -31,7 +31,7 @@ def exit_dist(valuation):
    
     elif 60000000 > valuation > 51000000:
         #C defers to LP, B and A converts to common shares
-        payout_amount = valuation-cap_Table['c']['invested']*2
+        payout_amount = valuation-c_cap
         payout_shares = total_shares-cap_Table['c']['shares']
         payouts = [c_cap, (payout_amount)*(b_shares/payout_shares), (payout_amount)*(a_shares/payout_shares), (payout_amount)*(com_shares/payout_shares)]
         print(payouts)
@@ -39,7 +39,7 @@ def exit_dist(valuation):
 
     elif 51000000 >= valuation > 46200000:
         #C and B defer to liquid preferences, A converts to common shares
-        payout_amount = valuation-cap_Table['c']['invested']*2-cap_Table['b']['invested']*2
+        payout_amount = valuation-c_cap-b_cap
         payout_shares = total_shares-cap_Table['b']['shares']-cap_Table['c']['shares']
         payouts = [c_cap, b_cap, (payout_amount)*(a_shares/payout_shares), (payout_amount)*(com_shares/payout_shares)]
         print(payouts)
@@ -47,15 +47,15 @@ def exit_dist(valuation):
 
     elif 46200000 >= valuation > 43500000:
         #C and B defer to liquid preferences, A converts to common shares; B is at cap.
-        scT_payout_ammount = valuation-cap_Table['c']['invested']-cap_Table['b']['invested']*2
-        scT_shares = total_shares-cap_Table['b']['shares']
-        payouts = [cap_Table['c']['invested']+scT_payout_ammount*(c_shares/scT_shares), b_cap, (scT_payout_ammount)*(a_shares/scT_shares), (scT_payout_ammount)*(com_shares/scT_shares)]
+        payout_amount = valuation-cap_Table['c']['invested']-b_cap
+        payout_shares = total_shares-cap_Table['b']['shares']
+        payouts = [cap_Table['c']['invested']+payout_amount*(c_shares/payout_shares), b_cap, (payout_amount)*(a_shares/payout_shares), (payout_amount)*(com_shares/payout_shares)]
         print(payouts)
         return None
 
     elif 43500000 >= valuation > 38500000:
         #C, B and A defer to liquid preferences; B and A are both at cap.
-        payout_amount = valuation-cap_Table['c']['invested']-cap_Table['b']['invested']*2-cap_Table['a']['invested']*2
+        payout_amount = valuation-cap_Table['c']['invested']-b_cap-a_cap
         payout_shares = total_shares-cap_Table['a']['shares']-cap_Table['b']['shares']
         payouts = [cap_Table['c']['invested']+(payout_amount*(c_shares/payout_shares)), b_cap, a_cap, (payout_amount)*(com_shares/payout_shares)]
         print(payouts)
@@ -77,19 +77,19 @@ def exit_dist(valuation):
         print(payouts)
         return None
 
-print('stage 1')
-exit_dist(60000000)
-print('stage 2')
-exit_dist(25000000)
-print('stage 3')
-exit_dist(35000000)
-print('stage 4')
-exit_dist(45000000)
-print('stage 5')
-exit_dist(40000000)
-exit_dist(50000000)
-exit_dist(70000000)
-print('stage 6')
-exit_dist(39000000)
+# print('stage 1')
+# exit_dist(60000000)
+# print('stage 2')
+# exit_dist(25000000)
+# print('stage 3')
+# exit_dist(35000000)
+# print('stage 4')
+# exit_dist(45000000)
+# print('stage 5')
+# exit_dist(40000000)
+# exit_dist(50000000)
+# exit_dist(70000000)
+# print('stage 6')
+# exit_dist(39000000)
 exit_dist(44000000)
-exit_dist(47000000)
+# exit_dist(47000000)
