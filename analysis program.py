@@ -91,5 +91,5 @@ def exit_dist(valuation):
 # exit_dist(70000000)
 # print('stage 6')
 # exit_dist(39000000)
-exit_dist(44000000)
+exit_dist(55000000)
 # exit_dist(47000000)
