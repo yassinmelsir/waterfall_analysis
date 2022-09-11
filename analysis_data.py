@@ -1,4 +1,4 @@
-cap_Table = {
+cap_table = {
     'common': {
         'shares': 1000000,
         'invested': 0
